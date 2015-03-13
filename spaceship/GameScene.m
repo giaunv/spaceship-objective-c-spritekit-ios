@@ -2,48 +2,67 @@
 //  GameScene.m
 //  spaceship
 //
-//  Created by lavalamp on 3/13/15.
+//  Created by giaunv on 3/13/15.
 //  Copyright (c) 2015 366. All rights reserved.
 //
 
 #import "GameScene.h"
 
-@implementation GameScene
+static const uint32_t shipCategory = 0x1 << 0;
+static const uint32_t obstacleCategory = 0x1 << 1;
 
--(void)didMoveToView:(SKView *)view {
-    /* Setup your scene here */
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    
-    myLabel.text = @"Hello, World!";
-    myLabel.fontSize = 65;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
-    
-    [self addChild:myLabel];
+@implementation GameScene{
+    SKSpriteNode *ship;
+    SKAction *actionMoveUp;
+    SKAction *actionMoveDown;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
+-(id)initWithSize:(CGSize)size{
+    if (self = [super initWithSize:size]){
+        self.backgroundColor = [SKColor whiteColor];
+        [self addShip];
+        
+        // Making self delegate of physics world
+        self.physicsWorld.gravity = CGVectorMake(0, 0);
+        self.physicsWorld.contactDelegate = self;
+    }
     
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.xScale = 0.5;
-        sprite.yScale = 0.5;
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
+    return self;
+}
+
+-(void)addShip{
+    // Initializing spaceship node
+    //SKSpriteNode *ship = [SKSpriteNode new];
+    ship = [SKSpriteNode spriteNodeWithImageNamed:@"SpaceShip"];
+    [ship setScale:0.5];
+    ship.zRotation = - M_PI / 2;
+    
+    // Adding SpriteKit physicsBody for collision detection
+    ship.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ship.size];
+    ship.physicsBody.categoryBitMask = shipCategory;
+    ship.physicsBody.dynamic = YES;
+    ship.physicsBody.contactTestBitMask = obstacleCategory;
+    ship.physicsBody.collisionBitMask = 0;
+    ship.name = @"ship";
+    ship.position = CGPointMake(120, 160);
+    
+    [self addChild:ship];
+    
+    actionMoveUp = [SKAction moveByX:0 y:30 duration:.2];
+    actionMoveDown = [SKAction moveByX:0 y:-30 duration:.2];
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch *touch = [touches anyObject];
+    CGPoint touchLocation = [touch locationInNode:self.scene];
+    if (touchLocation.y > ship.position.y) {
+        if (ship.position.y < 270) {
+            [ship runAction:actionMoveUp];
+        }
+    } else{
+        if (ship.position.y > 50) {
+            [ship runAction:actionMoveDown];
+        }
     }
 }
-
--(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
-}
-
 @end

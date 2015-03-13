@@ -16,6 +16,9 @@
 		942815B71AB252AA004EE6DF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 942815B61AB252AA004EE6DF /* Images.xcassets */; };
 		942815BA1AB252AA004EE6DF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942815B81AB252AA004EE6DF /* LaunchScreen.xib */; };
 		942815C61AB252AA004EE6DF /* spaceshipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 942815C51AB252AA004EE6DF /* spaceshipTests.m */; };
+		942815D31AB257B2004EE6DF /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 942815D01AB257B2004EE6DF /* bg.png */; };
+		942815D41AB257B2004EE6DF /* red-missile.png in Resources */ = {isa = PBXBuildFile; fileRef = 942815D11AB257B2004EE6DF /* red-missile.png */; };
+		942815D51AB257B2004EE6DF /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 942815D21AB257B2004EE6DF /* Spaceship.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		942815BF1AB252AA004EE6DF /* spaceshipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = spaceshipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		942815C41AB252AA004EE6DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		942815C51AB252AA004EE6DF /* spaceshipTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spaceshipTests.m; sourceTree = "<group>"; };
+		942815D01AB257B2004EE6DF /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		942815D11AB257B2004EE6DF /* red-missile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-missile.png"; sourceTree = "<group>"; };
+		942815D21AB257B2004EE6DF /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,7 @@
 				942815B11AB252AA004EE6DF /* GameViewController.m */,
 				942815B31AB252AA004EE6DF /* Main.storyboard */,
 				942815B61AB252AA004EE6DF /* Images.xcassets */,
+				942815CF1AB257B2004EE6DF /* art */,
 				942815B81AB252AA004EE6DF /* LaunchScreen.xib */,
 				942815A41AB252AA004EE6DF /* Supporting Files */,
 			);
@@ -125,6 +132,16 @@
 				942815C41AB252AA004EE6DF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		942815CF1AB257B2004EE6DF /* art */ = {
+			isa = PBXGroup;
+			children = (
+				942815D01AB257B2004EE6DF /* bg.png */,
+				942815D11AB257B2004EE6DF /* red-missile.png */,
+				942815D21AB257B2004EE6DF /* Spaceship.png */,
+			);
+			path = art;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +224,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				942815D51AB257B2004EE6DF /* Spaceship.png in Resources */,
+				942815D41AB257B2004EE6DF /* red-missile.png in Resources */,
+				942815D31AB257B2004EE6DF /* bg.png in Resources */,
 				942815BA1AB252AA004EE6DF /* LaunchScreen.xib in Resources */,
 				942815B71AB252AA004EE6DF /* Images.xcassets in Resources */,
 				942815AF1AB252AA004EE6DF /* GameScene.sks in Resources */,

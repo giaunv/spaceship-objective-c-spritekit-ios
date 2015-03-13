@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  spaceship
 //
-//  Created by lavalamp on 3/13/15.
+//  Created by giaunv on 3/13/15.
 //  Copyright (c) 2015 366. All rights reserved.
 //
 
