@@ -113,6 +113,11 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     
     _lastUpdateTime = currentTime;
     
+    if (currentTime - _lastMissileAdded > 1) {
+        _lastMissileAdded = currentTime + 1;
+        [self addMissile];
+    }
+    
     [self moveBg];
     [self moveObstacle];
 }
