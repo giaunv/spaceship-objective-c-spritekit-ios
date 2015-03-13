@@ -36,6 +36,8 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
         // Making self delegate of physics world
         self.physicsWorld.gravity = CGVectorMake(0, 0);
         self.physicsWorld.contactDelegate = self;
+        
+        [self addMissile];
     }
     
     return self;
@@ -111,5 +113,24 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     _lastUpdateTime = currentTime;
     
     [self moveBg];
+}
+
+-(void)addMissile{
+    // initializing spaceship node
+    SKSpriteNode *missile = [SKSpriteNode spriteNodeWithImageNamed:@"red-missile.png"];
+    [missile setScale:0.15];
+    
+    // Adding SpriteKit physicsBody for collision detection
+    missile.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:missile.size];
+    missile.physicsBody.categoryBitMask = obstacleCategory;
+    missile.physicsBody.dynamic = YES;
+    missile.physicsBody.contactTestBitMask = shipCategory;
+    missile.physicsBody.usesPreciseCollisionDetection = YES;
+    missile.name = @"missile";
+    // selecting random y position for missile
+    int r = arc4random() % 300;
+    missile.position = CGPointMake(self.frame.size.width + 20, r);
+    
+    [self addChild:missile];
 }
 @end
