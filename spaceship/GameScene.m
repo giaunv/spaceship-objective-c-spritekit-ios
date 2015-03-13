@@ -157,4 +157,19 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
         }
     }
 }
+
+-(void)didBeginContact:(SKPhysicsContact *)contact{
+    SKPhysicsBody *firstBody, *secondBody;
+    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
+        firstBody = contact.bodyA;
+        secondBody = contact.bodyB;
+    } else{
+        firstBody = contact.bodyB;
+        secondBody = contact.bodyA;
+    }
+    
+    if ((firstBody.categoryBitMask & shipCategory) != 0 && (secondBody.categoryBitMask & obstacleCategory) != 0) {
+        [ship removeFromParent];
+    }
+}
 @end
