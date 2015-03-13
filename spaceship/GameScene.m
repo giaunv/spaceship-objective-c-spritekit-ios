@@ -11,6 +11,7 @@
 static const uint32_t shipCategory = 0x1 << 0;
 static const uint32_t obstacleCategory = 0x1 << 1;
 static const float BG_VELOCITY = 100.0;
+static const float OBJECT_VELOCITY = 160.0;
 static inline CGPoint CGPointAdd(const CGPoint a, const CGPoint b){
     return CGPointMake(a.x + b.x, a.y + b.y);
 }
@@ -113,6 +114,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     _lastUpdateTime = currentTime;
     
     [self moveBg];
+    [self moveObstacle];
 }
 
 -(void)addMissile{
@@ -132,5 +134,22 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     missile.position = CGPointMake(self.frame.size.width + 20, r);
     
     [self addChild:missile];
+}
+
+-(void)moveObstacle{
+    NSArray *nodes = self.children;
+    
+    for (SKNode *node in nodes) {
+        if (![node.name isEqual:@"bg"] && ![node.name isEqual:@"ship"]) {
+            SKSpriteNode *ob = (SKSpriteNode *)node;
+            CGPoint obVeloctiy = CGPointMake(-OBJECT_VELOCITY, 0);
+            CGPoint amtMove = CGPointMultiplyScalar(obVeloctiy, _dt);
+            
+            ob.position = CGPointAdd(ob.position, amtMove);
+            if (ob.position.x < -100) {
+                [ob removeFromParent];
+            }
+        }
+    }
 }
 @end
