@@ -9,5 +9,5 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface GameOverScene : SKScene
-
+-(id)initWithSize:(CGSize)size score: (NSInteger)player_score;
 @end

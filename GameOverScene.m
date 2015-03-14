@@ -10,7 +10,7 @@
 #import "GameScene.h"
 
 @implementation GameOverScene
--(id)initWithSize:(CGSize)size{
+-(id)initWithSize:(CGSize)size score: (NSInteger)player_score{
     if (self = [super initWithSize:size]) {
         self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
         
@@ -29,6 +29,16 @@
         retryButton.position = CGPointMake(self.size.width/2, 50);
         retryButton.name = @"retry";
         [self addChild:retryButton];
+        
+        NSString *playerscoreMessage = [NSString stringWithFormat:@"Player Score: %ld", (long)player_score];
+        SKLabelNode *playerscore = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+        playerscore.text = playerscoreMessage;
+        playerscore.fontColor = [SKColor blackColor];
+        playerscore.position = CGPointMake(self.size.width/2, 250);
+        playerscore.name = @"Player Score";
+        [playerscore setScale:0.5];
+        
+        [self addChild:playerscore];
     }
     
     return self;

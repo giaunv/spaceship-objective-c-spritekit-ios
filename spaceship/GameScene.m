@@ -27,6 +27,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     NSTimeInterval _lastUpdateTime;
     NSTimeInterval _dt;
     NSTimeInterval _lastMissileAdded;
+    NSInteger player_score;
 }
 
 -(id)initWithSize:(CGSize)size{
@@ -38,6 +39,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
         // Making self delegate of physics world
         self.physicsWorld.gravity = CGVectorMake(0, 0);
         self.physicsWorld.contactDelegate = self;
+        player_score = 0;
         
         [self addMissile];
     }
@@ -139,6 +141,8 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     int r = arc4random() % 300;
     missile.position = CGPointMake(self.frame.size.width + 20, r);
     
+    // adding to score when ever new missile is created
+    player_score = player_score + 1;
     [self addChild:missile];
 }
 
@@ -173,7 +177,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
         [ship removeFromParent];
         
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
-        SKScene *gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+        SKScene *gameOverScene = [[GameOverScene alloc] initWithSize:self.size score:player_score];
         [self.view presentScene:gameOverScene transition:reveal];
     }
 }
