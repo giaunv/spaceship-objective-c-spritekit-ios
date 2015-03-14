@@ -19,6 +19,7 @@
 		942815D31AB257B2004EE6DF /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 942815D01AB257B2004EE6DF /* bg.png */; };
 		942815D41AB257B2004EE6DF /* red-missile.png in Resources */ = {isa = PBXBuildFile; fileRef = 942815D11AB257B2004EE6DF /* red-missile.png */; };
 		942815D51AB257B2004EE6DF /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 942815D21AB257B2004EE6DF /* Spaceship.png */; };
+		942815DD1AB3AD66004EE6DF /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 942815DC1AB3AD66004EE6DF /* GameOverScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		942815D01AB257B2004EE6DF /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		942815D11AB257B2004EE6DF /* red-missile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-missile.png"; sourceTree = "<group>"; };
 		942815D21AB257B2004EE6DF /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		942815DB1AB3AD66004EE6DF /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameOverScene.h; path = ../GameOverScene.h; sourceTree = "<group>"; };
+		942815DC1AB3AD66004EE6DF /* GameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameOverScene.m; path = ../GameOverScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,8 @@
 			children = (
 				942815A81AB252AA004EE6DF /* AppDelegate.h */,
 				942815A91AB252AA004EE6DF /* AppDelegate.m */,
+				942815DB1AB3AD66004EE6DF /* GameOverScene.h */,
+				942815DC1AB3AD66004EE6DF /* GameOverScene.m */,
 				942815AB1AB252AA004EE6DF /* GameScene.h */,
 				942815AC1AB252AA004EE6DF /* GameScene.m */,
 				942815AE1AB252AA004EE6DF /* GameScene.sks */,
@@ -248,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				942815DD1AB3AD66004EE6DF /* GameOverScene.m in Sources */,
 				942815B21AB252AA004EE6DF /* GameViewController.m in Sources */,
 				942815AA1AB252AA004EE6DF /* AppDelegate.m in Sources */,
 				942815AD1AB252AA004EE6DF /* GameScene.m in Sources */,

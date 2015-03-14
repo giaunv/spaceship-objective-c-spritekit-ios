@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+#import "GameOverScene.h"
 
 static const uint32_t shipCategory = 0x1 << 0;
 static const uint32_t obstacleCategory = 0x1 << 1;
@@ -170,6 +171,10 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     
     if ((firstBody.categoryBitMask & shipCategory) != 0 && (secondBody.categoryBitMask & obstacleCategory) != 0) {
         [ship removeFromParent];
+        
+        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+        SKScene *gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+        [self.view presentScene:gameOverScene transition:reveal];
     }
 }
 @end
